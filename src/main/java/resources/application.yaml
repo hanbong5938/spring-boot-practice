@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  shutdown: graceful
+  forward-headers-strategy: framework
+springdoc:
+  api-docs:
+    path: /api-docs
+spring:
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      isolation-level-for-create: DEFAULT
+      initialize-schema: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+        format_sql: true
+        default_schema: demo
+      jdbc:
+        time_zone: UTC
+  main:
+    web-application-type: servlet
+    allow-bean-definition-overriding: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/{vendor}/common
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+
+#local
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: 'jdbc:mysql://localhost:3306/demo?characterEncoding=UTF-8'
+    username: 'root'
+    password: '1234'
+cors:
+  allowed-origins: http://localhost:3000
+---

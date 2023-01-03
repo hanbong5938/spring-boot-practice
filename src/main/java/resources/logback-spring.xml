@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/basic.xml"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%green(%d{yyyy-MM-dd HH:mm:ss.SSS}) [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+
+
+    <property resource="application.yaml"/>
+    <springProperty name="spring.datasource.url" source="spring.datasource.url"/>
+    <springProperty name="spring.datasource.username" source="spring.datasource.username"/>
+    <springProperty name="spring.datasource.password" source="spring.datasource.password"/>
+
+    <appender name="DB" class="com.github.demo.global.log.LogbackDBAppender">
+        <filter class="com.github.demo.global.log.filter.LogbackFilter"/>
+        <connectionSource
+                class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+            <driverClass>com.mysql.cj.jdbc.Driver</driverClass>
+            <url>${spring.datasource.url}</url>
+            <user>${spring.datasource.username}</user>
+            <password>${spring.datasource.password}</password>
+        </connectionSource>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="DB"/>
+    </root>
+
+</configuration>
