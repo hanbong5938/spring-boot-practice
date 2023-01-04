@@ -35,21 +35,14 @@ dependencies {
     )
     implementation(
             'ch.qos.logback.db:logback-clasisc-db:1.2.11',
-            'com.github.vladimir-bukhtoyarov:bucket4j-core:7.6.0',
-            'com.github.vladimir-bukhtoyarov:bucket4j-jcache:7.6.0',
             'com.google.guava:guava:31.1-jre',
             'com.querydsl:querydsl-core:5.0.0',
             'com.querydsl:querydsl-jpa:5.0.0:jakarta',
             'com.vladmihalcea:hibernate-types-60:2.20.0',
             'io.jsonwebtoken:jjwt-api:0.11.5',
             'io.micrometer:micrometer-registry-prometheus:1.10.2',
-            'javax.cache:cache-api:1.1.1',
-            'mysql:mysql-connector-java:8.0.30',
-            'net.ttddyy:datasource-proxy:1.8.1',
-            'org.apache.poi:poi:5.2.3',
-            'org.ehcache:ehcache:3.10.8',
-            'org.flywaydb:flyway-core:9.10.0',
-            'org.flywaydb:flyway-mysql:9.10.0',
+            'org.flywaydb:flyway-core:9.10.2',
+            'org.flywaydb:flyway-mysql:9.10.2',
             'org.jetbrains:annotations:23.0.0',
             'org.springdoc:springdoc-openapi-ui:1.6.13',
             'org.springframework.boot:spring-boot-starter-actuator',
@@ -62,6 +55,7 @@ dependencies {
             'org.springframework.security:spring-security-rsa:1.0.11.RELEASE',
     )
     runtimeOnly(
+            'com.mysql:mysql-connector-j:8.0.31',
             'io.jsonwebtoken:jjwt-impl:0.11.5',
             'io.jsonwebtoken:jjwt-jackson:0.11.5',
     )

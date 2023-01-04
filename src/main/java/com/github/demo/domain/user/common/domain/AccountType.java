@@ -5,6 +5,6 @@ import lombok.Getter;
 @Getter
 public enum AccountType {
     ADMIN,
-    USER
+    MEMBER
     ;
 }

@@ -1,4 +1,4 @@
-create table log.logging_event
+create table logging_event
 (
     timestmp          bigint       not null,
     formatted_message text         not null,
@@ -18,7 +18,7 @@ create table log.logging_event
         primary key
 );
 
-CREATE TABLE log.logging_event_exception
+CREATE TABLE logging_event_exception
 (
     `event_id`   bigint(20)   NOT NULL,
     `i`          smallint(6)  NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE log.logging_event_exception
     CONSTRAINT `logging_event_exception_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `logging_event` (`event_id`)
 );
 
-create table log.logging_event_property
+create table logging_event_property
 (
     event_id     bigint       not null,
     mapped_key   varchar(254) not null,
@@ -37,7 +37,7 @@ create table log.logging_event_property
         foreign key (event_id) references log.logging_event (event_id)
 );
 
-create table log.query_logging_event
+create table query_logging_event
 (
     timestmp          bigint       not null,
     formatted_message text         not null,

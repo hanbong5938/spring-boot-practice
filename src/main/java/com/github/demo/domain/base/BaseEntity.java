@@ -1,13 +1,10 @@
 package com.github.demo.domain.base;
 
-import com.github.demo.constant.DateTimeFormatConstant;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Where;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter

@@ -28,7 +28,7 @@
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DB"/>
+<!--        <appender-ref ref="DB"/>-->
     </root>
 
 </configuration>
