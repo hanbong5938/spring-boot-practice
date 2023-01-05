@@ -1,7 +1,7 @@
 package com.github.demo.domain.user.common.api;
 
 import com.github.demo.domain.user.common.dto.AccountDto;
-import com.github.demo.domain.user.common.service.SignInService;
+import com.github.demo.domain.user.common.factory.SignInFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1")
 public class SignInApi {
 
-    private final SignInService signInService;
+    private final SignInFactory signInFactory;
 
     @PostMapping("/sign-in")
     public ResponseEntity<AccountDto.TokenResponse> signIn(@RequestBody AccountDto.SignInRequest request) {
-        return ResponseEntity.ok(this.signInService.signIn(request));
+        return ResponseEntity.ok(this.signInFactory.getService(request.accountType()).signIn(request));
     }
 }

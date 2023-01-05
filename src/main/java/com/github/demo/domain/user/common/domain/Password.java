@@ -167,4 +167,9 @@ public class Password implements Serializable {
     public static PasswordEncoder getEncoder() {
         return encoder;
     }
+
+    public Password(final String value) {
+        this.value = value;
+    }
+
 }

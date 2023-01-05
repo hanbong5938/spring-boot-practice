@@ -16,8 +16,8 @@ public class SignUpFactory extends AbstractAccountTypeFactory<SignUpService> {
     private final AdminSignUpService  adminSignUpService;
     private final MemberSignUpService memberSignUpService;
 
-    public SignUpService getService(final @NotNull AccountType userType) {
-        return switch (userType) {
+    public SignUpService getService(final @NotNull AccountType accountType) {
+        return switch (accountType) {
             case ADMIN -> this.adminSignUpService;
             case MEMBER -> this.memberSignUpService;
         };
