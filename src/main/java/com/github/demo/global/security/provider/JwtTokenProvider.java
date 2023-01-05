@@ -58,10 +58,6 @@ public class JwtTokenProvider {
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
-    private @NotNull UUID toUUID(final String id) {
-        return UUID.fromString(id);
-    }
-
     private @NotNull String getId(final @NotNull Claims claims) {
         return claims.get(SecurityConstant.UUID).toString();
     }
@@ -98,20 +94,17 @@ public class JwtTokenProvider {
         return expiration.before(new Date());
     }
 
-    private String generateToken(final @NotNull Account account, final boolean isRefreshToken) {
+    public String generateToken(final @NotNull Account account) {
         final Map<String, Object> claims = new HashMap<>();
         claims.put(SecurityConstant.JWT_CLAIMS, account.getAccountType());
         claims.put(SecurityConstant.UUID, account.getId());
 
-        return this.doGenerateToken(claims, account.getUsername(), isRefreshToken);
+        return this.doGenerateToken(claims, account.getUsername());
     }
 
-    private String doGenerateToken(final Map<String, Object> claims, final String username,
-                                   final boolean isRefreshToken) {
+    private String doGenerateToken(final Map<String, Object> claims, final String username) {
         final Date createdDate = new Date();
-        final Date expirationDate = new Date(isRefreshToken ?
-                SecurityConstant.REFRESH_JWT_EXPIRED + createdDate.getTime()
-                : SecurityConstant.ACCESS_JWT_EXPIRED + createdDate.getTime());
+        final Date expirationDate = new Date(SecurityConstant.ACCESS_JWT_EXPIRED + createdDate.getTime());
 
         return Jwts.builder()
                 .setClaims(claims)

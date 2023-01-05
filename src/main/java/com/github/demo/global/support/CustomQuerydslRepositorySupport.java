@@ -36,7 +36,7 @@ public abstract class CustomQuerydslRepositorySupport {
     private Querydsl querydsl;
     private JPAQueryFactory queryFactory;
 
-    public CustomQuerydslRepositorySupport(Class<?> domainClass) {
+    protected CustomQuerydslRepositorySupport(Class<?> domainClass) {
         Assert.notNull(domainClass, "Domain class must not be null!");
         this.domainClass = domainClass;
     }

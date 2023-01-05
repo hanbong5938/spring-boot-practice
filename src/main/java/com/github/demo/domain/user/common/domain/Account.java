@@ -75,10 +75,13 @@ public abstract class Account extends BaseEntity implements UserDetails {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.isAccountNonExpired() && this.isCredentialsNonExpired() && this.isAccountNonLocked();
     }
     @Override
     public String getPassword() {
         return this.password.getValue();
+    }
+    public Password getPasswordObject() {
+        return this.password;
     }
 }
