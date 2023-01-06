@@ -6,6 +6,7 @@ import com.github.demo.domain.user.common.domain.Account;
 import com.github.demo.domain.user.common.domain.AccountType;
 import com.github.demo.domain.user.common.domain.Password;
 import com.github.demo.domain.user.member.domain.Member;
+import com.github.demo.global.validation.annotation.SignUp;
 import lombok.Builder;
 
 public record AccountDto() {
@@ -14,6 +15,7 @@ public record AccountDto() {
 
     }
 
+    @SignUp
     public record SignUpRequest(AccountType accountType, Email email, Password password) {
         public Account toAccount() {
             return switch (this.accountType) {
