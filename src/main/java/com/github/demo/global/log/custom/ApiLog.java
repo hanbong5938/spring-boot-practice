@@ -1,4 +1,4 @@
-package com.github.demo.global.log;
+package com.github.demo.global.log.custom;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
