@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Length;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.Serial;
@@ -33,7 +33,7 @@ public class Password implements Serializable {
     private static final long serialVersionUID = 3903415264190251207L;
 
     @Transient
-    private static PasswordEncoder encoder = new BCryptPasswordEncoder();
+    private static PasswordEncoder encoder = Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();
 
     @Length
     @Column(name = "password", length = 100)
@@ -156,10 +156,6 @@ public class Password implements Serializable {
 
     private boolean isMatches(final String rawPassword) {
         return encoder.matches(rawPassword, this.value);
-    }
-
-    public String getPassword() {
-        return "{bcrypt}" + value;
     }
 
     public String getOriginalValue() {
