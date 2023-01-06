@@ -35,10 +35,8 @@ dependencies {
     )
     implementation(
             'ch.qos.logback.db:logback-clasisc-db:1.2.11',
-            'com.google.guava:guava:31.1-jre',
             'com.querydsl:querydsl-core:5.0.0',
             'com.querydsl:querydsl-jpa:5.0.0:jakarta',
-            'com.vladmihalcea:hibernate-types-60:2.20.0',
             'io.jsonwebtoken:jjwt-api:0.11.5',
             'io.micrometer:micrometer-registry-prometheus:1.10.2',
             'org.flywaydb:flyway-core:9.10.2',
