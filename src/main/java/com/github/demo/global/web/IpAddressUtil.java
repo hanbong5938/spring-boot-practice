@@ -17,7 +17,6 @@ public class IpAddressUtil {
      *
      * @param request
      * @return ip 주소
-     * @since 2022-01-19
      */
     public static String getClientIp(final HttpServletRequest request) {
         final String[] ip = {request.getHeader(IpAddressConstant.X_FORWARDED_FOR)};
@@ -39,7 +38,6 @@ public class IpAddressUtil {
      *
      * @param ip array 람다식 위해서 배열
      * @return boolean
-     * @since 2022-01-19
      */
     private static boolean isEmpty(final String[] ip) {
         return Objects.isNull(ip[0]) || ip[0].isBlank() || ip[0].equalsIgnoreCase(IpAddressConstant.UNKNOWN)

@@ -50,7 +50,6 @@ public class Password implements Serializable {
      * 로그인 실패
      * default 0
      *
-     * @since 2021-12-15
      */
     @Column(columnDefinition = "int(1) default 0")
     @NotEmpty
