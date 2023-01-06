@@ -13,6 +13,7 @@ public abstract class AccountRepository<T extends Account> extends CustomQueryds
     protected AccountRepository(final Class<T> account) {
         super(account);
     }
+
     @Transactional
     @SuppressWarnings("unchecked")
     public T save(final T account) {
@@ -41,4 +42,5 @@ public abstract class AccountRepository<T extends Account> extends CustomQueryds
 
     public abstract Account findByEmail(final Email email);
 
+    public abstract boolean existByEmail(final Email email);
 }

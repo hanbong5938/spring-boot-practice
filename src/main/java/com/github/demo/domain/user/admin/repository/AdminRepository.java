@@ -36,6 +36,17 @@ public class AdminRepository extends AccountRepository<Admin> {
                 .fetchOne();
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public boolean existByEmail(final Email email) {
+        UUID one = this.select(ADMIN.id)
+                .from(ADMIN)
+                .where(
+                        this.emailEq(email)
+                ).fetchOne();
+        return one != null;
+    }
+
     private BooleanExpression idEq(final UUID id) {
         return id == null ? null : ADMIN.id.eq(id);
     }

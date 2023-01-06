@@ -36,6 +36,17 @@ public class MemberRepository extends AccountRepository<Member> {
                 .fetchOne();
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public boolean existByEmail(final Email email) {
+        UUID one = this.select(MEMBER.id)
+                .from(MEMBER)
+                .where(
+                        this.emailEq(email)
+                ).fetchOne();
+        return one != null;
+    }
+
     private BooleanExpression idEq(final UUID id) {
         return id == null ? null : MEMBER.id.eq(id);
     }
