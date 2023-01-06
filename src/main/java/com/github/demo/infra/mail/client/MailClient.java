@@ -27,7 +27,7 @@ public class MailClient {
      * 재시도 5회까지
      * url + 인식하지 못하는 경우 방지 위하여
      */
-    public MailDto.MailResponse sendSms(final MailDto.MailRequest request) {
+    public MailDto.MailResponse send(final MailDto.MailRequest request) {
         return this.webClient.post()
                 .uri(uriBuilder -> UriComponentsBuilder.fromUri(uriBuilder.build())
                         .path("/mail")
