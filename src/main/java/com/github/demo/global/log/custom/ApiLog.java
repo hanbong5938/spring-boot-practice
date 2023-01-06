@@ -76,7 +76,7 @@ public class ApiLog {
         hasData.put(CustomLogConstant.PARAMS, parameterMap.size() > 0);
         final Collection<Part> parts = this.checkFile(request, hasData);
         final UUID userId = this.getUuid(request, result);
-        final AccountType accountType = this.getUserType(request, result);
+        final AccountType accountType = this.getAccountType(request, result);
         final String ip = IpAddressUtil.getClientIp(request);
         log.info(this.getLogFormat(hasData),
                 http, url, signature.getDeclaringTypeName(),
@@ -162,7 +162,7 @@ public class ApiLog {
         return userId;
     }
 
-    private @Nullable AccountType getUserType(final HttpServletRequest request, final ResponseEntity<?> result) {
+    private @Nullable AccountType getAccountType(final HttpServletRequest request, final ResponseEntity<?> result) {
         final AccountType accountType = this.jwtTokenProvider.getAccountType(request);
         if (accountType == null) {
             if (result == null) {
