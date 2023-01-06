@@ -61,7 +61,7 @@ public class SecurityConfiguration {
                         authorize.requestMatchers(HttpMethod.OPTIONS, "/**/*").permitAll()
                                 .requestMatchers(
                                         "/actuator/**", "/swagger-ui/**", "/api-docs/**",
-                                        "/*/sign-in", "/*/sign-up").permitAll()
+                                        "/*/sign-in", "/v1/sign-up").permitAll()
                                 .requestMatchers("/*/member/**").hasAuthority(AccountType.MEMBER.name())
                                 .requestMatchers("/*/admin/**").hasAuthority(AccountType.ADMIN.name())
                                 .anyRequest().hasAnyAuthority(AccountType.MEMBER.name(), AccountType.ADMIN.name()))
