@@ -129,7 +129,7 @@ public class Password implements Serializable {
     }
 
     public boolean isExpiration() {
-        if (this.getIssuedPasswordAuthDate() == null) {
+        if (this.getLastUpdatePassword() == null) {
             return true;
         }
         return LocalDateTime.now().minusDays(SecurityConstant.EXPIRED_PASSWORD).isAfter(lastUpdatePassword);

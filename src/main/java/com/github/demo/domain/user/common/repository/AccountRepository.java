@@ -38,6 +38,11 @@ public abstract class AccountRepository<T extends Account> extends CustomQueryds
         return this.findByEmail(Email.of(email));
     }
 
+    @Transactional(readOnly = true)
+    public boolean existByEmail(final String email) {
+        return this.existByEmail(Email.of(email));
+    }
+
     public abstract Account findById(final UUID id);
 
     public abstract Account findByEmail(final Email email);

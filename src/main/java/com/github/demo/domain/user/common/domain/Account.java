@@ -9,10 +9,7 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,6 +19,7 @@ import java.util.Collection;
 import java.util.List;
 
 @MappedSuperclass
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -81,6 +79,7 @@ public abstract class Account extends BaseEntity implements UserDetails {
     public String getPassword() {
         return this.password.getValue();
     }
+
     public Password getPasswordObject() {
         return this.password;
     }

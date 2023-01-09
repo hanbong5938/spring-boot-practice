@@ -48,7 +48,7 @@ public class Phone implements Serializable {
 
         return phoneLength > wantLength ?
                 Integer.parseInt(this.value.substring(phoneLength - wantLength))
-                : Integer.parseInt(this.value.substring(1));
+                : Integer.parseInt(this.value);
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.github.demo.domain.user.member.domain;
 
 import com.github.demo.domain.user.common.domain.Account;
+import com.github.demo.domain.user.common.domain.AccountType;
 import com.github.demo.domain.user.common.dto.AccountDto;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
@@ -23,5 +24,10 @@ public class Member extends Account implements Serializable {
                 .email(request.email())
                 .password(request.password())
                 .build();
+    }
+
+    @Override
+    public AccountType getAccountType() {
+        return AccountType.MEMBER;
     }
 }
