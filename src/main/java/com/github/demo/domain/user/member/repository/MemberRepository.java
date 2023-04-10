@@ -8,6 +8,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -53,5 +54,11 @@ public class MemberRepository extends AccountRepository<Member> {
 
     private BooleanExpression emailEq(final Email email) {
         return email == null ? null : MEMBER.email.eq(email);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Member> findAll() {
+        return this.selectFrom(MEMBER)
+                .fetch();
     }
 }
